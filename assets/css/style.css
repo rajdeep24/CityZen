@@ -12,7 +12,7 @@
 }
 
 #jobs-output-page {
-    display: none;
+    display: ;
 }
 
 .home-page-inputs {
@@ -23,6 +23,7 @@
 }
 
 #nabvar-list {
+    float: left;
 }
 
 #nav-list-items {
@@ -40,7 +41,7 @@
 
 #heart-icon {
   
-
+}
 #suitcase-icon {
     
 }
