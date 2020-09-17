@@ -7,6 +7,10 @@
 
 }
 
+#homepage {
+    display: block;
+}
+
 .home-page-inputs {
     margin: 5% 0;
     height: 5rem;
@@ -14,11 +18,11 @@
     text-align: center;
 }
 
-#nabvar-list {
+.navbar-list {
     float: left;
 }
 
-#nav-list-items {
+.nav-list-items {
     list-style-type: none;
 
 }
@@ -27,21 +31,21 @@
     width: 45%;
     margin: 18% 38.5%;
 }
-#description-output {
+.description-output {
     margin: 5%;
 }
 
-#job-details-list {
+.job-details-list {
     margin: 6%;
     float: left;
 }
 
-#job-details-list li {
+.job-details-list li {
     list-style-type: none;
     float: left;
     margin: 0 5.5%;
 }
-#job-requirement-list {
+.job-requirement-list {
     list-style-type:none;
     float: left;
 }
