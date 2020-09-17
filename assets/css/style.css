@@ -30,6 +30,7 @@
 .jobs-output {
     width: 45%;
     margin: 18% 38.5%;
+    display: block;
 }
 .description-output {
     margin: 5%;
@@ -52,10 +53,19 @@
 
 .carousel {
     width: 100%;
-    height: 150px;
+    height: 6rem;
+    
 }
 
 .carousel-item {
+    height: 400px;
     width: 100%;
-    height: 500px;
+    object-fit: cover;
+    
 }
+
+.searchBtnCol {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
