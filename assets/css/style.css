@@ -1,0 +1,48 @@
+#logo {
+    font-size: 10em;
+}
+
+#job-details-screen {
+    margin: 5.5%;
+
+}
+
+.home-page-inputs {
+    margin: 5% 0;
+    height: 5rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+#nabvar-list {
+    float: left;
+}
+
+#nav-list-items {
+    list-style-type: none;
+
+}
+
+.jobs-output {
+    width: 45%;
+    margin: 18% 38.5%;
+}
+#description-output {
+    margin: 5%;
+}
+
+#job-details-list {
+    margin: 6%;
+    float: left;
+}
+
+#job-details-list li {
+    list-style-type: none;
+    float: left;
+    margin: 0 5.5%;
+}
+#job-requirement-list {
+    list-style-type:none;
+    float: left;
+}
+
