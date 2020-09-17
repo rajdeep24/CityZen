@@ -50,3 +50,12 @@
     float: left;
 }
 
+.carousel {
+ height: 100px;
+ width: auto;
+}
+
+.carousel-item {
+    height: 400px;
+    width: 100%;
+   }
