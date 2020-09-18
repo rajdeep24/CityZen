@@ -1,71 +1,194 @@
 #logo {
-    font-size: 10em;
+  font-size: 10em;
 }
 
 #job-details-screen {
-    margin: 5.5%;
-
+  margin: 5.5%;
 }
 
 #homepage {
-    display: block;
+  display: block;
 }
 
 .home-page-inputs {
-    margin: 5% 0;
-    height: 5rem;
-    font-size: 2rem;
-    text-align: center;
+  margin: 5% 0;
+  height: 5rem;
+  font-size: 2rem;
+  text-align: center;
 }
 
+.navbar {
+  background: rgb(249, 236, 77);
+  background: linear-gradient(
+    0deg,
+    rgba(249, 236, 77, 1) 0%,
+    rgba(246, 198, 85, 1) 100%
+  );
+  padding: 0px;
+  margin: 0px;
+  height: 75px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  border-bottom: rgb(71, 111, 184, 1) solid;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+  padding: 5px;
+  margin: 5px;
+  float: left;
+}
 .navbar-list {
-    float: left;
+  float: left;
 }
 
 .nav-list-items {
-    list-style-type: none;
-
+  list-style-type: none;
 }
 
+.slogan {
+  color: rgb(255, 249, 180);
+  color: linear-gradient(
+    0deg,
+    rgb(255, 248, 176) 0%,
+    rgba(246, 198, 85, 1) 100%
+  );
+  position: relative;
+  text-decoration: underline;
+  text-shadow: 2px 2px rgb(71, 111, 184, 1);
+}
+
+h1 {
+  float: left;
+  color: rgb(27, 45, 78);
+  margin-right: auto;
+  font-weight: bold;
+}
+
+.city {
+    font-family: 'Bebas Neue', cursive;
+}
+
+.zen {
+    font-family: 'Permanent Marker', cursive;
+}
 .jobs-output {
-    width: 45%;
-    margin: 18% 38.5%;
-    display: block;
+  width: 45%;
+  margin: 18% 38.5%;
+  display: block;
 }
 .description-output {
-    margin: 5%;
+  margin: 5%;
+}
+.occupation-output{
+    color: rgb(71, 111, 184, 1);
+}
+.location-output{
+    color: rgb(62, 189, 241);
 }
 
 .job-details-list {
-    margin: 6%;
-    float: left;
+  margin: 6%;
+  float: left;
 }
 
 .job-details-list li {
-    list-style-type: none;
-    float: left;
-    margin: 0 5.5%;
+  list-style-type: none;
+  float: left;
+  margin: 0 5.5%;
 }
 .job-requirement-list {
-    list-style-type:none;
-    float: left;
+  list-style-type: none;
+  float: left;
 }
 
 .carousel {
-    width: 100%;
-    height: 6rem;
-    
+  width: 100%;
+  height: 6rem;
+  object-fit: cover;
 }
 
 .carousel-item {
-    height: 400px;
-    width: 100%;
-    object-fit: cover;
-    
+  z-index: -1;
+  object-fit: cover;
+  height: 450px;
+  width: 100%;
 }
 
+.carousel-inner img {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  height: 450px;
+}
 .searchBtnCol {
-    margin-top: auto;
-    margin-bottom: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
+button {
+    color: white;
+  transition: 0.5s ease;
+  background: rgb(249, 236, 77);
+  background: linear-gradient(
+    0deg,
+    rgba(249, 236, 77, 1) 0%,
+    rgba(246, 198, 85, 1) 100%
+  );
+  border: none;
+  font-weight: bold;
+}
+button:hover {
+  transition: 0.5s ease;
+  background: rgb(62, 189, 241);
+  background: linear-gradient(
+    0deg,
+    rgba(62, 189, 241, 1) 0%,
+    rgba(71, 111, 184, 1) 100%
+  );
+  border: none;
+}
+
+.searchHouse {
+    width: 100%;
+    border: none;
+}
+
+footer {
+  position: static;
+  left: 0;
+  bottom: 0;
+  height: 20px;
+  width: 100%;
+  background: rgb(249, 236, 77);
+  background: linear-gradient(
+    0deg,
+    rgba(249, 236, 77, 1) 0%,
+    rgba(246, 198, 85, 1) 100%);
+  border-top: rgb(71, 111, 184, 1) solid;
+  border-width: 2px;
+  text-align: center;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.jobs-output {
+  background: white;
+  border: rgb(71, 111, 184, 1) solid;
+  border-radius: 20px;
+  border-width: 1px;
+  float: left;
+}
+
+.home-page {
+  position: absolute;
+
+  top: 150px;
+}
+
+.jobEntry {
+  margin-top: 200px;
+  padding: 5px;
+
+}
