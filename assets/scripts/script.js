@@ -9,23 +9,37 @@ $(document).ready(function () {
 
 	//the job types added by the user need to be dumpted into an array for local storage later.
 	var savedJobArray = [];
-
+    var jobsArray = [];
 	//When a user clicks the submit button then we run an AJAX call to search for those specific variables
 
 	function runJobCitySearch() {
 		var occupationInput = $(".occupation-input").val();
 		var cityInput = $(".city-input").val();
 		console.log(occupationInput);
-		console.log(cityInput);
-
+        console.log(cityInput);
+        
 		var queryURL = "https://cors-anywhere.herokuapp.com/https://api.adzuna.com/v1/api/jobs/us/search/10?app_id=d279677d&app_key=" + ApiKEY + "&what=" + occupationInput + "&where=" + cityInput;
 
 		$.ajax({
 			url: queryURL,
 			method: "GET",
 		}).then(function (response) {
-			//DOM Elements
-			console.log(response);
+            //DOM Elements
+            
+
+            for (var i = 0; i < 6; i++) {
+                var jobObject = {
+                    company: response.results[i].company.display_name,
+                    position: response.results[i].title,
+                    location: response.results[i].location.area[3],
+                    description: response.results[i].description,
+                };
+                jobsArray.push(jobObject);
+    
+            };
+            console.log(jobsArray);
+
+			// console.log(response);
 			$(".city-input").empty();
 			$(".occupation-input").empty();
 			//	var apartmentStateFromJob = response.mean.results[0].location.area[1];
@@ -41,10 +55,10 @@ $(document).ready(function () {
 		var cityInputLS = $(".city-input").val();
 		var occupationInputLS = $(".occupation-input").val();
 		savedCityArray.push(cityInputLS);
-		localStorage.setItem(cityInputLS, savedCityArray);
+		localStorage.setItem("city", savedCityArray);
 		console.log(savedCityArray);
 		savedJobArray.push(occupationInputLS);
-		localStorage.setItem(occupationInputLS, savedJobArray);
+		localStorage.setItem("occupation", savedJobArray);
 		console.log(savedJobArray);
 		//$(".home-page").hide();
 		// $(".jobs-output-page").show();
