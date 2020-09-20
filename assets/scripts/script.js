@@ -2,6 +2,9 @@ $(document).ready(function () {
 
 	$("#jobs-output-page").hide();
 	$("#job-details-screen").hide();
+	$(".job-details-list").hide();
+	$(".description-output").hide();
+	$(".jumbotron").hide();
 	
 
   //This is my API key:
@@ -38,7 +41,6 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (response) {
 	  console.log(response);
-	  console.log(adzunaJobsArray);
 
 	  var jobObject = {
 		company: response.results[i].company.display_name,
@@ -92,21 +94,26 @@ $(document).ready(function () {
     });
   };
 
+  	//Add Event Listeners Here
+  	$(".home-submit-button").on("click", function (event) {
+		event.preventDefault();
+		event.stopPropagation();
+		$("#home-page").hide();
+		$("#carouselExampleControls").hide();
+		$("#jobs-output-page").show();
+		$("#job-details-screen").hide();
+		runJobCitySearch();
+	});
+	
 
-  	function createJobResultsDiv() {
-		for (var i = 0; i < jobObject.length; i++){
-			var jobObject = jobObject(i)
+  	// function createJobResultsDiv() {
+	// 	for (var i = 0; i < jobObject.length; i++){
+	// 		var jobObject = jobObject(i)
+
+	// 	}
 
 
-
-
-
-
-
-		}
-
-
-	  }
+	  //}
 
 
 //   $(".heart-job-icon").on("click", function (event) {
@@ -222,19 +229,5 @@ $(document).ready(function () {
 	// 	console.log(abbrState(apartmentStateFromJob));
   	// };
 
-	//     //Add Event Listeners Here
-  	// $(".home-submit-button").on("click", function (event) {
-	// 	event.preventDefault();
-	// 	event.stopPropagation();
-	// 	$("#home-page").hide();
-	// 	$("#carouselExampleControls").hide();
-	// 	$("#jobs-output-page").show();
-	// 	runJobCitySearch();
-	// });
-	
-	// $("#heart-icon").on("click", function () {
-		//$("#jobs-output-page").hide();
-		//$("#job-details-screen").show();
-	//}); 
 
 });
