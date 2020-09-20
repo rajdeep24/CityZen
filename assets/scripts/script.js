@@ -1,112 +1,109 @@
-$(document).ready(function () {
+$(document).ready(function (){
+    $("#jobs-output-page").hide();
+    $("#job-details-screen").hide();
 
-	$("#jobs-output-page").hide();
-	$("#job-details-screen").hide();
-	
+    var adzunaJobsArray = [];
 
-  //This is my API key:
-  ApiKEY = "34c685494080bb76386590eb0d7c02f9";
-
-  //variables to store user inputs for desired job type and city location
-
-  //the cities added by the user need to be dumped into an array for local storage later.
-  var savedCityArray = [];
-
-  //the job types added by the user need to be dumpted into an array for local storage later.
-  var resultsJobArray = [];
-  var adzunaJobsArray = [];
-
-
-  //When a user clicks the submit button then we run an AJAX call to search for those specific variables
-
-  function runJobCitySearch() {
-    var occupationInput = $(".occupation-input").val();
-    var cityInput = $(".city-input").val();
-    console.log(occupationInput);
-    console.log(cityInput);
-
+function runHomeSearch () {
+    var occupationInput = $("#occupation-input").val();
+    var cityInput = $("#city-input").val();
+    var apiKey = "34c685494080bb76386590eb0d7c02f9";
     var queryURL =
-      "https://cors-anywhere.herokuapp.com/https://api.adzuna.com/v1/api/jobs/us/search/6?app_id=d279677d&app_key=" +
-      ApiKEY +
-      "&what=" +
-      occupationInput +
-      "&where=" +
-      cityInput;
+    "https://cors-anywhere.herokuapp.com/https://api.adzuna.com/v1/api/jobs/us/search/6?app_id=d279677d&app_key=" +
+    apiKey +
+    "&what=" +
+    occupationInput +
+    "&where=" +
+    cityInput;
 
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-    }).then(function (response) {
-	  console.log(response);
-	  console.log(adzunaJobsArray);
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+//    console.log(response);
+    for (var i = 0; i < 6; i++) {
 
-	  var jobObject = {
-		company: response.results[i].company.display_name,
-		position: response.results[i].title,
-		city: response.results[i].location.area[3],
-		state: response.results[i].location.area[1],
-		description: response.results[i].description,
-	  };
+        var jobObject = {
+            company: response.results[i].company.display_name,
+            position: response.results[i].title,
+            city: response.results[i].location.area[3],
+            state: response.results[i].location.area[1],
+            description: response.results[i].description,
+          };
+      
+          console.log(jobObject);
+          adzunaJobsArray.push(jobObject);
+          }
+    }
+  )};
 
-	  //console.log(jobObject);
-	  adzunaJobsArray.push(jobObject);
+function createJobCards () {
 
-      for (var i = 0; i <jobObject.length; i++) {
-		var jobResultRowDiv = $("<div>");
-		jobResultRowDiv.addClass("row justify-content-center");
-		var cardJobEntryDiv = $("<div>");
-		cardJobEntryDiv.addClass("col-md-4 border card jobEntry");
-		var jobLogoOutput = $("<h4>");
-		jobLogoOutput.addClass("job-logo-output");
-		var occupationOutput = $("<p>");
-		occupationOutput.addClass("occupation-output");
-		var cityOutput = $("<p>");
-		cityOutput.addClass("city-output");
-		var stateOutput = $("<p>");
-		stateOutput.addClass("state-output");
-		var descriptionOutput = $("<p>");
-		descriptionOutput.addClass("description-output");
-
-		$(".job-logo-output").text(response.results[i].company.display_name);
-		$(".occupation-output").text(response.results[i].title);
-		$(".city-output").text(response.results[i].location.area[3]);
-		$(".state-output").text(response.results[i].location.area[1]);
-		$(".description-output").text(response.results[i].description);
-
-		// cardJobEntryDiv.append(jobLogoOutput);
-		// cardJobEntryDiv.append(occupationOutput);
-		// cardJobEntryDiv.append(cityOutput);
-		// cardJobEntryDiv.append(stateOutput);
-		// cardJobEntryDiv.append(descriptionOutput);
-		//jobResultRowDiv.append(cardJobEntryDiv);
-
-		$("#jobs-output-page").append(jobResultRowDiv);
-	  }
-	  
-	  
-	
-      // console.log(response);
-      $(".city-input").empty();
-	  $(".occupation-input").empty();
-	  
-    });
-  };
+    
+for (var t = 0; t < 6; t++) {
 
 
-  	function createJobResultsDiv() {
-		for (var i = 0; i < jobObject.length; i++){
-			var jobObject = jobObject(i)
+        var newRow = $("<div>").addClass("row");
+        var newCol = $("<div>").addClass("col-lg-10");
+        var newForm = $("<form>").addClass("jobs-output text-center");
+        var newFormGroup = $("<div>").addClass("form-group");
+        var newH1 = $("<h1>");
+        var newH2 = $("<h2>");
+        var newH3 = $("<h3>");
+        var newP = $("<p>");
+        // var newSaveBtn = $("<button>");
+        var newDetailsBtn = $("<button>");
+    
+        newH1.text(adzunaJobsArray[t].company);
+        newH2.text(adzunaJobsArray[t].position);
+        newH3.text(adzunaJobsArray[t].city + ", " + adzunaJobsArray[t].state);
+        newP.text(adzunaJobsArray[t].description);
+        // newSaveBtn.text("Save");
+        newDetailsBtn.text("Details");
+
+        // newSaveBtn.addClass("btn btn-lg btn-info m-4 saveButton");
+        newDetailsBtn.addClass("btn btn-lg btn-info m-4 detailsButton");
+
+
+        $(".detailsButton").on("click", function (event) {
+            event.preventDefault();
+            $("#jobs-output-page").hide();
+            $("#job-details-screen").show();
+        });
+        // $(".saveButton").on("click", function (event) {
+        //     event.preventDefault();
+        //     $("#jobs-output-page").hide();
+        // });
+
+
+        newFormGroup.prepend(newDetailsBtn);
+        // newFormGroup.prepend(newSaveBtn);
+        newFormGroup.prepend(newP);
+        newFormGroup.prepend(newH3);
+        newFormGroup.prepend(newH2);
+        newFormGroup.prepend(newH1);
+        newForm.append(newFormGroup);
+        newCol.append(newForm);
+        newRow.append(newCol);
+        $("#jobs-output-page").append(newRow);
+    }
+
+}
+
+
+$("#home-submit-button").on("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    runHomeSearch();
+    createJobCards();
+    $("#home-page").hide();
+    $("#jobs-output-page").show();
+});
 
 
 
 
-
-
-
-		}
-
-
-	  }
+});
 
 
 //   $(".heart-job-icon").on("click", function (event) {
@@ -236,5 +233,3 @@ $(document).ready(function () {
 		//$("#jobs-output-page").hide();
 		//$("#job-details-screen").show();
 	//}); 
-
-});

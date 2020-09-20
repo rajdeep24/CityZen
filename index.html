@@ -26,171 +26,95 @@
      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap" rel="stylesheet">
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light mr-auto">
-      <span class="navbar-brand mb-0 h1"
-        ><img
-          src="./assets/images/CityZenLogo.png"
-          alt="CityZen logo"
-          class="logo"
-      /></span>
-      <h1><span class="city">City</span><span class="zen">Zen</span></h1>
-    </nav>
-    <div
-      id="carouselExampleControls"
-      class="carousel slide"
-      data-ride="carousel"
-    >
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img
-            src="https://images.unsplash.com/photo-1502175353174-a7a70e73b362?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1270&q=80"
-            class="d-block w-100"
-            alt="Seattle Cityscape"
-          />
-        </div>
-        <div class="carousel-item">
-          <img
-            src="https://images.unsplash.com/photo-1575540616469-cc6185554e1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=810&q=80"
-            class="d-block w-100"
-            alt="Denver Cityscape"
-          />
-        </div>
-        <div class="carousel-item">
-          <img
-            src="https://images.unsplash.com/photo-1444852538915-ac95232916dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-            class="d-block w-100"
-            alt="Atlanta Cityscape"
-          />
-        </div>
-        <div class="carousel-item">
-          <img
-            src="https://images.unsplash.com/photo-1496588152823-86ff7695e68f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-            class="d-block w-100"
-            alt="New York Cityscape"
-          />
-        </div>
-        <div class="carousel-item">
-          <img
-            src="https://images.unsplash.com/photo-1507876466758-bc54f384809c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1642&q=80"
-            class="d-block w-100"
-            alt="Hawaii Cityscape"
-          />
-        </div>
-      </div>
-    </div>
 
-    <!--Home Page with Carousel and City & Desired Job Buttons-->
-    <div class="container" id="home-page">
-      <div class="slogan"><h2>Work Anywhere. Live Anywhere.</h2></div>
+    <div class="container text-center" id="home-page">
       <div class="row">
-        <div class="col-md-5">
-          <form>
-            <div class="form-group text-center">
-              <input
-                type="text"
-                class="form-control home-page-inputs city-input"
-                placeholder="Where to?"
-              />
-            </div>
-        </div>
-<div class="col-md-5">
-        <div class="form-group text-center">
-          <input
-            type="text"
-            class="form-control home-page-inputs occupation-input"
-            placeholder="What's your hustle?"
-          />
-        </div>
-    </div>
-      <div class="col-md-1 searchBtnCol">
-        <button
-          type="submit"
-          class="btn btn-lg btn-info home-submit-button"
-        >
-          SEARCH
-        </button>
+          <div class="col-lg-12">
+               <img src="./assets/images/logo2.jpg" id="logo-image">
+          </div>
       </div>
-    </form>
+      <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-8">
+              <form>
+                  <div class="form-group">
+                    <input type="email" class="form-control home-page-inputs" id="city-input" placeholder="Where to?">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control home-page-inputs" id="occupation-input" placeholder="What's your hustle?">
+                  </div>
+                  <button type="submit" class="btn btn-lg btn-info" id="home-submit-button">Submit</button>
+                </form>
+          </div>
+      </div>
   </div>
-</div>
-    
-
-    <!--Job List Results Page - Should show only 6 cards-->
-    <div class="container" id="jobs-output-page">
-        <!--<div class="row">
-            <div class="col-lg-12">-->
-                <div class="row justify-content-center">
-                    <div class="col-md-4 border card jobEntry">
-                        <h1 class="job-logo-output"></h1>
-                        <h2 class="occupation-output"></h3>
-                        <h3 class="city-output"></h3>
-                        <h3 class= "state-output"></h3>
-                        <p class="description-output"></p>
-                    </div>
-                <!-- </div> -->
-            <!-- </div> -->
-        </div>
-    
-        <!--Selected Job Details In Depth with option to Save and Move to Appts-->
-        <div class="container text-center" id="job-details-screen">
-            <div class="jumbotron">
-                <h6>pictures go here.</h6>
-            </div>
+  
+  
+  <div class="container" id="jobs-output-page">
+      <!-- <div class="row">
+          <div class="col-lg-10">
+              <form action="" class="jobs-output text-center">
+                  <div class="form-group">
+                      <h1 id="job-logo-output">Apple</h1>
+                      <h2 id="occupation-output">Software Engineer</h3>
+                      <h3 id="location-output">San Fransisco, Ca</h3>
+                      <p id="description-output">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae quas repudiandae in nostrum commodi nam ipsam reiciendis totam optio velit? Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo autem totam eum dolores quibusdam ex ullam iste nesciunt quam expedita?</p>
+                      <button type="button" class="btn btn-lg btn-info" id="save-button">Save</button>
+                      <button type="button" class="btn btn-lg btn-info" id="details-button">Details</button>
+                  </div>
+              </form>
           </div>
-        </div>
-          </div>
-        </div>
+      </div> -->
+  </div>
+      <div class="container text-center" id="job-details-screen">
+         
+              <ul id="job-details-list">
+                  <li id="location-output">San Fransisco, Ca</li>
+                  <li id="jop-logo-output">Apple</li>
+                  <li id="occupation-output">Software Engineer</li> 
+                  <li id="salary-output">Avg Salary: 100000.00 / yr</li>
+  
+              </ul>
+              <br>
+              <div id="description-output-parent">
+                  <ul id="job-requirement-list">
+                      <li>
+                          <p id="description-output">Quae quas repudiandae in nostrum commodi nam ipsam reiciendis totam optio velit? Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+  
+                      </li>
+                      <li>
+                          <p id="description-output">Quae quas repudiandae in nostrum commodi nam ipsam reiciendis totam optio velit? Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+  
+                      </li>
+                      <li>
+                          <p id="description-output">Quae quas repudiandae in nostrum commodi nam ipsam reiciendis totam optio velit? Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+  
+                      </li>
+                  </ul>
+                  
+  
+                  <button id="heart-icon" class="btn btn-info">Contact</button>
+                  <button id="suitcase-icon" class="btn btn-info">Save</button>
+              </div>       
+      </div>  
+  </div>
+  <footer>
+      <div class="nav nav-bar">
+          <h1>
+              <ul id="navbar-list">
+                  <li id="nav-list-items">
+                      <a href=""></a>
+                  </li>
+                  <li id="nav-list-items">
+                      <a href=""></a>
+                  </li>
+                  <li id="nav-list-items">
+                      <a href=""></a>
+                  </li>
+              </ul>
+          </h1>
       </div>
-      <div class="container text-center" class="job-details-screen display:none">
-        <div class="jumbotron">
-          <h6>pictures go here.</h6>
-        </div>
-        <ul class="job-details-list">
-          <li class="location-output">San Fransisco, Ca</li>
-          <li class="jop-logo-output">Apple</li>
-          <li class="occupation-output">Software Engineer</li>
-          <li class="salary-output">Avg Salary: 100000.00 / yr</li>
-        </ul>
-        <div class="description-output-parent">
-          <ul class="job-requirement-list">
-            <li>
-              <p class="description-output">
-                Quae quas repudiandae in nostrum commodi nam ipsam reiciendis
-                totam optio velit? Lorem ipsum dolor sit amet consectetur
-                adipisicing elit.
-              </p>
-            </li>
-            <li>
-              <p class="description-output">
-                Quae quas repudiandae in nostrum commodi nam ipsam reiciendis
-                totam optio velit? Lorem ipsum dolor sit amet consectetur
-                adipisicing elit.
-              </p>
-            </li>
-            <li>
-              <p class="description-output">
-                Quae quas repudiandae in nostrum commodi nam ipsam reiciendis
-                totam optio velit? Lorem ipsum dolor sit amet consectetur
-                adipisicing elit.
-              </p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-
-    <!--Apartment Listing Results Page-->
-
-
-
-
-    <!--Selected Apartment Details and Save Page-->
-
-
-
-
-    <footer></footer>
+  </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
       integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
