@@ -2,7 +2,7 @@ $(document).ready(function () {
 	$("#jobs-output-page").hide();
 	$("#job-details-screen").hide();
   
-	var adzunaJobsArray = [];
+  var adzunaJobsArray = [];
   
 	function runHomeSearch() {
 	  var occupationInput = $("#occupation-input").val();
@@ -32,7 +32,16 @@ $(document).ready(function () {
 		  };
   
 		  console.log(jobObject);
-		  adzunaJobsArray.push(jobObject);
+      adzunaJobsArray.push(jobObject);
+      
+      city = JSON.stringify(jobObject.city);
+      localStorage.setItem("city", city);
+
+      state = JSON.stringify(jobObject.state);
+      localStorage.setItem("state", state);
+
+      localStorage.setItem("job", occupationInput);
+
 		}
 	  });
 	}
