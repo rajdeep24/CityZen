@@ -60,7 +60,7 @@ $(document).ready(function () {
       method: "GET",
       headers: {
         "x-rapidapi-host": "realtor.p.rapidapi.com",
-        "x-rapidapi-key": "de31a49087msh7e6a19849d29566p11115ejsn6929dc4e049c",
+        "x-rapidapi-key": "37a6715c61msh49cc2d9363e91bdp129972jsna5c33d2a29f7",
       },
     };
 
