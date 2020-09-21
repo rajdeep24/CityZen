@@ -28,7 +28,8 @@ function runHomeSearch () {
             position: response.results[i].title,
             city: response.results[i].location.area[3],
             state: response.results[i].location.area[1],
-            description: response.results[i].description,
+			description: response.results[i].description,
+			postingUrl: response.results[i].redirect_url,
           };
       
           console.log(jobObject);
@@ -44,7 +45,7 @@ for (var t = 0; t < 6; t++) {
 
 
         var newRow = $("<div>").addClass("row");
-        var newCol = $("<div>").addClass("col-lg-10");
+        var newCol = $("<div>").addClass("col-lg-12");
         var newForm = $("<form>").addClass("jobs-output text-center");
         var newFormGroup = $("<div>").addClass("form-group");
         var newH1 = $("<h1>");
@@ -52,23 +53,21 @@ for (var t = 0; t < 6; t++) {
         var newH3 = $("<h3>");
         var newP = $("<p>");
         // var newSaveBtn = $("<button>");
-        var newDetailsBtn = $("<button>");
+		var newDetailsBtn = $("<button>");
     
         newH1.html(adzunaJobsArray[t].company);
         newH2.html(adzunaJobsArray[t].position);
         newH3.html(adzunaJobsArray[t].city + ", " + adzunaJobsArray[t].state);
         newP.html(adzunaJobsArray[t].description);
         // newSaveBtn.text("Save");
-        newDetailsBtn.text("Details");
-
+		newDetailsBtn.text("Job Posting");
         // newSaveBtn.addClass("btn btn-lg btn-info m-4 saveButton");
-        newDetailsBtn.addClass("btn btn-lg btn-info m-4 detailsButton");
+		newDetailsBtn.addClass("btn btn-lg btn-info m-4 detailsButton");
 
 
         $(".detailsButton").on("click", function (event) {
             event.preventDefault();
-            $("#jobs-output-page").hide();
-            $("#job-details-screen").show();
+            window.open(adzunaJobsArray[t].postingUrl);
         });
         // $(".saveButton").on("click", function (event) {
         //     event.preventDefault();
