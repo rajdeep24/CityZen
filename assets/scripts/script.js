@@ -94,85 +94,90 @@ $(document).ready(function () {
 		$("#home-page").hide();
 		$("#jobs-output-page").show();
 	});
+	
+	function houseListingCards() {
+		var stateInput = $("#inputState").val();
+		var cityInput = $("#city-input").val();
+		var settings = {
+			async: true,
+			crossDomain: true,
+			url: "https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=" + cityInput + "&state_code=" + stateInput + "&limit=6&offset=0",
+			method: "GET",
+			headers: {
+				"x-rapidapi-host": "realtor.p.rapidapi.com",
+				"x-rapidapi-key": "de31a49087msh7e6a19849d29566p11115ejsn6929dc4e049c",
+			},
+		};
+		$.ajax(settings).done(function (response) {
+			console.log(response);
+	
+			for (var i = 0; i < 6; i++) {
+				var apartmentObject = {
+					address_line: response.properties[i].address.line,
+					postal_code: response.properties[i].address.postal_code,
+					type: response.properties[i].prop_type,
+					baths: response.properties[i].community.baths_min,
+					bedrooms: response.properties[i].community.beds_min,
+					price: response.properties[i].community.price_min,
+					square_footage: response.properties[i].community.sqft_min,
+					aptUrl: response.properties[i].rdc_web_url,
+				};
+	
+				console.log(apartmentObject);
+				apartmentObjectArray.push(apartmentObject);
+			}
+		});
+	};
+
+		function createApartmentCards() {
+			for (var t = 0; t < 6; t++) {
+				var newRow = $("<div>").addClass("row");
+				var newCol = $("<div>").addClass("col-lg-12");
+				var newForm = $("<form>").addClass("jobs-output text-center");
+				var newFormGroup = $("<div>").addClass("form-group");
+				var newH1 = $("<h1>");
+				var newH2 = $("<h2>");
+				var newH3 = $("<h3>");
+				var newP = $("<p>");
+				// var newSaveBtn = $("<button>");
+				var newApartmentDetailsBtn = $("<button>");
+	
+				newH1.html(apartmentObjectArray[t].address_line + ", " + postal_code);
+				newH2.html(apartmentObjectArray[t].type);
+				newH3.html(apartmentObjectArray[t].baths + ", " + bedrooms);
+				newP.html(apartmentObjectArray[t].aptUrl);
+				// newSaveBtn.text("Save");
+				newApartmentDetailsBtn.text("View Listing");
+				// newSaveBtn.addClass("btn btn-lg btn-info m-4 saveButton");
+				newApartmentDetailsBtn.addClass("btn btn-lg btn-info m-4 aptDetailsButton");
+	
+				// $(".saveButton").on("click", function (event) {
+				//     event.preventDefault();
+				//     $("#jobs-output-page").hide();
+				// });
+	
+				newFormGroup.prepend(newDetailsBtn);
+				// newFormGroup.prepend(newSaveBtn);
+				newFormGroup.prepend(newP);
+				newFormGroup.prepend(newH3);
+				newFormGroup.prepend(newH2);
+				newFormGroup.prepend(newH1);
+				newForm.append(newFormGroup);
+				newCol.append(newForm);
+				newRow.append(newCol);
+				$("#housing-output-page").append(newRow);
+			}
+			$(".aptDetailsButton").on("click", function (event) {
+				event.preventDefault();
+				window.open(apartmentObjectArray[t].aptUrl);
+			});
+		}
+	
+
+
 });
 
-function houseListingCards() {
-	var stateInput = $("#inputState").val();
-	var cityInput = $("#city-input").val();
-	var settings = {
-		async: true,
-		crossDomain: true,
-		url: "https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=" + cityInput + "&state_code=" + stateInput + "&limit=6&offset=0",
-		method: "GET",
-		headers: {
-			"x-rapidapi-host": "realtor.p.rapidapi.com",
-			"x-rapidapi-key": "de31a49087msh7e6a19849d29566p11115ejsn6929dc4e049c",
-		},
-	};
-	$.ajax(settings).done(function (response) {
-		console.log(response);
 
-		for (var i = 0; i < 6; i++) {
-			var apartmentObject = {
-				address_line: response.properties[i].address.line,
-				postal_code: response.properties[i].address.postal_code,
-				type: response.properties[i].prop_type,
-				baths: response.properties[i].community.baths_min,
-				bedrooms: response.properties[i].community.beds_min,
-				price: response.properties[i].community.price_min,
-				square_footage: response.properties[i].community.sqft_min,
-				aptUrl: response.properties[i].rdc_web_url,
-			};
-
-			console.log(apartmentObject);
-			apartmentObjectArray.push(apartmentObject);
-		}
-	});
-
-	function createApartmentCards() {
-		for (var t = 0; t < 6; t++) {
-			var newRow = $("<div>").addClass("row");
-			var newCol = $("<div>").addClass("col-lg-12");
-			var newForm = $("<form>").addClass("jobs-output text-center");
-			var newFormGroup = $("<div>").addClass("form-group");
-			var newH1 = $("<h1>");
-			var newH2 = $("<h2>");
-			var newH3 = $("<h3>");
-			var newP = $("<p>");
-			// var newSaveBtn = $("<button>");
-			var newApartmentDetailsBtn = $("<button>");
-
-			newH1.html(apartmentObjectArray[t].address_line + ", " + postal_code);
-			newH2.html(apartmentObjectArray[t].type);
-			newH3.html(apartmentObjectArray[t].baths + ", " + bedrooms);
-			newP.html(apartmentObjectArray[t].aptUrl);
-			// newSaveBtn.text("Save");
-			newApartmentDetailsBtn.text("View Listing");
-			// newSaveBtn.addClass("btn btn-lg btn-info m-4 saveButton");
-			newApartmentDetailsBtn.addClass("btn btn-lg btn-info m-4 aptDetailsButton");
-
-			// $(".saveButton").on("click", function (event) {
-			//     event.preventDefault();
-			//     $("#jobs-output-page").hide();
-			// });
-
-			newFormGroup.prepend(newDetailsBtn);
-			// newFormGroup.prepend(newSaveBtn);
-			newFormGroup.prepend(newP);
-			newFormGroup.prepend(newH3);
-			newFormGroup.prepend(newH2);
-			newFormGroup.prepend(newH1);
-			newForm.append(newFormGroup);
-			newCol.append(newForm);
-			newRow.append(newCol);
-			$("#housing-output-page").append(newRow);
-		}
-		$(".aptDetailsButton").on("click", function (event) {
-			event.preventDefault();
-			window.open(apartmentObjectArray[t].aptUrl);
-		});
-	}
-}
 //   $(".heart-job-icon").on("click", function (event) {
 //     event.preventDefault();
 //     var resultsSelectedCity = $(".location-output").val();
