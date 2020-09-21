@@ -22,32 +22,6 @@ body {
   text-align: center;
 }
 
-#nav-list-items {
-  list-style-type: none;
-}
-
-.jobs-output {
-  width: 45%;
-  margin: 18% 38.5%;
-}
-#description-output {
-  margin: 5%;
-}
-
-.job-details-list {
-  margin: 6%;
-  float: left;
-}
-
-.job-details-list li {
-  list-style-type: none;
-  float: left;
-  margin: 0 5.5%;
-}
-.job-requirement-list {
-  list-style-type: none;
-  float: left;
-}
 
 /* -------- */
 
@@ -110,11 +84,7 @@ h1 {
 .zen {
   font-family: "Permanent Marker", cursive;
 }
-.jobs-output {
-  width: 45%;
-  margin: 18% 38.5%;
-  display: block;
-}
+
 .description-output {
   margin: 5%;
 }
@@ -183,6 +153,8 @@ button:hover {
   border: rgb(71, 111, 184, 1) solid;
   border-radius: 20px;
   border-width: 1px;
+  padding: 5px;
+margin: 10px;
   float: left;
 }
 
@@ -192,6 +164,7 @@ button:hover {
 }
 
 footer {
+  z-index: -1;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -203,8 +176,8 @@ footer {
     rgba(22, 25, 31, 1) 100%
   );
   color: white;
-  padding: 0px;
-  margin: 0px;
+  padding: 10px;
+  margin-top: 20px;
   height: 75px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
