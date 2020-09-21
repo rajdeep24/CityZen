@@ -4,6 +4,7 @@ $(document).ready(function () {
 
   var adzunaJobsArray = [];
   var apartmentObjectArray = [];
+  console.log(apartmentObjectArray);
 
   function runHomeSearch() {
     var occupationInput = $("#occupation-input").val();
@@ -66,16 +67,16 @@ $(document).ready(function () {
     $.ajax(settings).done(function (response) {
       console.log(response);
 
-      for (var i = 0; i < 6; i++) {
+      for (var p = 0; p < 6; p++) {
         var apartmentObject = {
-          address_line: response.properties[i].address.line,
-          postal_code: response.properties[i].address.postal_code,
-          type: response.properties[i].prop_type,
-          baths: response.properties[i].community.baths_min,
-          bedrooms: response.properties[i].community.beds_min,
-          price: response.properties[i].community.price_min,
-          square_footage: response.properties[i].community.sqft_min,
-          aptUrl: response.properties[i].rdc_web_url,
+          address_line: response.properties[p].address.line,
+          postal_code: response.properties[p].address.postal_code,
+          type: response.properties[p].prop_type,
+          baths: response.properties[p].community.baths_min,
+          bedrooms: response.properties[p].community.beds_min,
+          price: response.properties[p].community.price_min,
+          square_footage: response.properties[p].community.sqft_min,
+          aptUrl: response.properties[p].rdc_web_url,
         };
 
         console.log(apartmentObject);
@@ -129,7 +130,7 @@ $(document).ready(function () {
   }
 
   function createApartmentCards() {
-    for (var t = 0; t < 6; t++) {
+    for (var p = 0; p < 6; p++) {
       var newRow = $("<div>").addClass("row");
       var newCol = $("<div>").addClass("col-lg-12");
       var newForm = $("<form>").addClass("jobs-output text-center");
@@ -137,14 +138,15 @@ $(document).ready(function () {
       var newH1 = $("<h1>");
       var newH2 = $("<h2>");
       var newH3 = $("<h3>");
+      var newH4 = $("<h4>");
       var newP = $("<p>");
       // var newSaveBtn = $("<button>");
       var newApartmentDetailsBtn = $("<button>");
-
-      // newH1.html(apartmentObjectArray[t].address_line + ", " + postal_code);
-      // newH2.html(apartmentObjectArray[t].type);
-      // newH3.html(apartmentObjectArray[t].baths + ", " + bedrooms);
-      // newP.html(apartmentObjectArray[t].aptUrl);
+      newH1.html(apartmentObjectArray[p].address_line);
+      newH2.html(apartmentObjectArray[p].type);
+      newH3.html(apartmentObjectArray[p].baths);
+      newH4.html(apartmentObjectArray[p].bedrooms);
+      newP.html(apartmentObjectArray[p].aptUrl);
       // newSaveBtn.text("Save");
       newApartmentDetailsBtn.text("View Listing");
       // newSaveBtn.addClass("btn btn-lg btn-info m-4 saveButton");
@@ -168,7 +170,7 @@ $(document).ready(function () {
     }
     $(".aptDetailsButton").on("click", function (event) {
       event.preventDefault();
-      window.open(apartmentObjectArray[t].aptUrl);
+      window.open(apartmentObjectArray[p].aptUrl);
     });
   }
   $("#home-submit-button").on("click", function (event) {
