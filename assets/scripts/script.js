@@ -71,10 +71,10 @@ $(document).ready(function () {
         var apartmentObject = {
           address_line: response.properties[p].address.line,
           postal_code: response.properties[p].address.postal_code,
-          type: response.properties[p].prop_type,
-          baths: response.properties[p].community.baths_min,
-          bedrooms: response.properties[p].community.beds_min,
-          price: response.properties[p].community.price_min,
+          type: "Property Type: " + response.properties[p].prop_type,
+          baths: "# of Baths = " + response.properties[p]. community.baths_min,
+          bedrooms: "# of Beds = " + response.properties[p].community.beds_min,
+          price: "$ " + response.properties[p].community.price_min,
           square_footage: response.properties[p].community.sqft_min,
           aptUrl: response.properties[p].rdc_web_url,
         };
@@ -135,17 +135,19 @@ $(document).ready(function () {
       var newCol = $("<div>").addClass("col-lg-12");
       var newForm = $("<form>").addClass("jobs-output text-center");
       var newFormGroup = $("<div>").addClass("form-group");
-      var newH1 = $("<h1>");
-      var newH2 = $("<h2>");
-      var newH3 = $("<h3>");
-      var newH4 = $("<h4>");
+      var newH1Address = $("<h1>");
+      var newH2Type = $("<h2>");
+      var newH3Baths = $("<h3>");
+      var newH3Beds = $("<h4>");
+      var newH5 = $("<h5>");
       var newP = $("<p>");
       // var newSaveBtn = $("<button>");
       var newApartmentDetailsBtn = $("<button>");
-      newH1.html(apartmentObjectArray[p].address_line);
-      newH2.html(apartmentObjectArray[p].type);
-      newH3.html(apartmentObjectArray[p].baths);
-      newH4.html(apartmentObjectArray[p].bedrooms);
+      newH1Address.html(apartmentObjectArray[p].address_line);
+      newH2Type.html(apartmentObjectArray[p].type);
+      newH3Baths.html(apartmentObjectArray[p].baths);
+      newH3Beds.html(apartmentObjectArray[p].bedrooms);
+      newH5.html(apartmentObjectArray[p].price)
       newP.html(apartmentObjectArray[p].aptUrl);
       // newSaveBtn.text("Save");
       newApartmentDetailsBtn.text("View Listing");
@@ -160,9 +162,11 @@ $(document).ready(function () {
       newFormGroup.prepend(newApartmentDetailsBtn);
       // newFormGroup.prepend(newSaveBtn);
       newFormGroup.prepend(newP);
-      newFormGroup.prepend(newH3);
-      newFormGroup.prepend(newH2);
-      newFormGroup.prepend(newH1);
+      newFormGroup.prepend(newH5);
+      newFormGroup.prepend(newH3Beds);
+      newFormGroup.prepend(newH3Baths);
+      newFormGroup.prepend(newH2Type);
+      newFormGroup.prepend(newH1Address);
       newForm.append(newFormGroup);
       newCol.append(newForm);
       newRow.append(newCol);
