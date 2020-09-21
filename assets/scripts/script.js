@@ -28,6 +28,14 @@ $(document).ready(function () {
 
 				console.log(jobObject);
 				adzunaJobsArray.push(jobObject);
+
+				city = JSON.stringify(jobObject.city);
+				localStorage.setItem("city", city);
+
+				state = JSON.stringify(jobObject.state);
+				localStorage.setItem("state", state);
+
+				localStorage.setItem("job", occupationInput);
 			}
 		});
 	}
